@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>The Fallarino Group · Entrepreneur &amp; Real Estate Investor Platform</title>
+  <meta name="description" content="A private platform for entrepreneurs and real-estate investors. One platform. The complete picture. Better decisions. Coming soon.">
+  <meta name="theme-color" content="#0a0d12">
+
+  <!-- Open Graph / social cards -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="The Fallarino Group">
+  <meta property="og:description" content="Entrepreneur &amp; real-estate investor platform. One platform. The complete picture. Better decisions. Coming soon.">
+  <!-- Swap for https://<your-domain>/assets/og.jpg once the custom domain is live -->
+  <meta property="og:image" content="https://rafetangorra-tech.github.io/fallarino-group-splash/assets/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Inter:wght@400;500;600&family=Marcellus&display=swap" rel="stylesheet">
+
+  <link rel="preload" as="image" href="assets/storefront-15.jpg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="stage">
+
+    <!-- Photography -->
+    <img
+      class="backdrop"
+      src="assets/storefront-15.jpg"
+      srcset="assets/storefront-1x.jpg 821w, assets/storefront-15.jpg 1120w, assets/storefront-2x.jpg 1744w"
+      sizes="100vw"
+      alt="The Fallarino Group storefront at dusk, with a Range Rover and Hayabusa parked out front"
+      fetchpriority="high">
+
+    <!-- Cinematic grade -->
+    <div class="scrim scrim-top" aria-hidden="true"></div>
+    <div class="scrim scrim-bottom" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <main class="content">
+
+      <!-- Masthead — set in the sky -->
+      <header class="masthead">
+        <p class="the reveal" style="--d:.15s"><span>The</span></p>
+        <h1 class="wordmark">
+          <span class="fallarino reveal" style="--d:.3s">Fallarino</span>
+          <span class="group reveal" style="--d:.45s">Group</span>
+        </h1>
+        <div class="rule rule-draw reveal" style="--d:.7s" aria-hidden="true"></div>
+        <p class="eyebrow reveal" style="--d:.85s">Entrepreneur &amp; Real&nbsp;Estate Investor Platform</p>
+      </header>
+
+      <div class="spacer" aria-hidden="true"></div>
+
+      <!-- Action — grounded on the asphalt -->
+      <footer class="foot">
+        <p class="status reveal" style="--d:1.05s">Coming Soon</p>
+        <p class="thesis reveal" style="--d:1.2s">One platform. The complete picture. Better&nbsp;decisions.</p>
+
+        <form id="access-form" class="access reveal" style="--d:1.35s" novalidate>
+          <label class="visually-hidden" for="email">Email address</label>
+          <input id="email" name="email" type="email" required
+                 placeholder="Email address" autocomplete="email" spellcheck="false">
+          <button type="submit">Request Access</button>
+        </form>
+        <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
+
+        <div class="pillars reveal" style="--d:1.55s">
+          <span>Strategy</span><span class="dot" aria-hidden="true"></span>
+          <span>Financing</span><span class="dot" aria-hidden="true"></span>
+          <span>Structure</span><span class="dot" aria-hidden="true"></span>
+          <span>Growth</span><span class="dot" aria-hidden="true"></span>
+          <span>Partnership</span>
+        </div>
+
+        <p class="legal reveal" style="--d:1.7s">&copy; <span id="year">2026</span> The Fallarino Group</p>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

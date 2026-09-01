@@ -1,0 +1,391 @@
+/* ————————————————————————————————————————————————
+   The Fallarino Group — splash
+   Ink & champagne. One gold. One serif. No noise.
+———————————————————————————————————————————————— */
+
+:root {
+  --ink: #0a0d12;
+  --cream: #f4eee1;
+  --cream-dim: rgba(244, 238, 225, 0.62);
+  --stone: rgba(233, 226, 211, 0.55);
+  --gold: #c9a25e;
+  --gold-soft: rgba(201, 162, 94, 0.55);
+  --hairline: rgba(244, 238, 225, 0.22);
+
+  --font-display: "Marcellus", "Times New Roman", serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", -apple-system, "Helvetica Neue", sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { color-scheme: dark; }
+
+body {
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* ——— Stage ——— */
+
+.stage {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 44%;
+  animation: settle 14s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes settle {
+  from { transform: scale(1.07); }
+  to   { transform: scale(1); }
+}
+
+/* Portrait screens see nearly the full plate */
+@media (max-aspect-ratio: 3/4) {
+  .backdrop { object-position: 50% 50%; }
+}
+
+/* ——— Grade: scrims, vignette, grain ——— */
+
+.scrim, .vignette, .grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.scrim-top {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 13, 18, 0.7) 0%,
+    rgba(10, 13, 18, 0.42) 28%,
+    rgba(10, 13, 18, 0) 56%
+  );
+}
+
+.scrim-bottom {
+  background: linear-gradient(
+    0deg,
+    rgba(10, 13, 18, 0.97) 0%,
+    rgba(10, 13, 18, 0.86) 14%,
+    rgba(10, 13, 18, 0.55) 32%,
+    rgba(10, 13, 18, 0.2) 48%,
+    rgba(10, 13, 18, 0) 64%
+  );
+}
+
+.vignette {
+  background: radial-gradient(
+    120% 90% at 50% 42%,
+    rgba(10, 13, 18, 0) 58%,
+    rgba(10, 13, 18, 0.38) 100%
+  );
+}
+
+.grain {
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ——— Content ——— */
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100svh;
+  padding: clamp(2.2rem, 6vh, 4.5rem) clamp(1.25rem, 5vw, 3rem)
+           clamp(1.4rem, 3.5vh, 2.4rem);
+  text-align: center;
+}
+
+.spacer { flex: 1; }
+
+/* ——— Masthead ——— */
+
+.the {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  padding-left: 0.5em; /* optically recentre tracked caps */
+}
+
+.the::before, .the::after {
+  content: "";
+  height: 1px;
+  width: 44px;
+}
+.the::before { background: linear-gradient(90deg, transparent, var(--gold-soft)); }
+.the::after  { background: linear-gradient(90deg, var(--gold-soft), transparent); }
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.04;
+  text-shadow: 0 2px 28px rgba(10, 13, 18, 0.45);
+}
+
+.fallarino {
+  display: block;
+  font-size: clamp(2.7rem, 9.6vw, 5.6rem);
+  letter-spacing: 0.075em;
+  padding-left: 0.075em;
+  text-transform: uppercase;
+  margin-top: 1rem;
+}
+
+.group {
+  display: block;
+  font-size: clamp(1.05rem, 3.3vw, 1.7rem);
+  letter-spacing: 0.62em;
+  padding-left: 0.62em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  margin-top: 0.45rem;
+}
+
+.rule {
+  width: 58px;
+  height: 1px;
+  margin: 1.6rem auto 1.35rem;
+  background: var(--gold);
+}
+
+.rule-draw { transform-origin: center; }
+
+.eyebrow {
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  padding-left: 0.34em;
+  text-transform: uppercase;
+  color: rgba(244, 238, 225, 0.82);
+  text-shadow: 0 1px 10px rgba(10, 13, 18, 0.75), 0 0 24px rgba(10, 13, 18, 0.6);
+}
+
+/* ——— Foot ——— */
+
+.foot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.status {
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.56em;
+  padding-left: 0.56em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.thesis {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.2rem, 2.7vw, 1.55rem);
+  color: var(--cream);
+  margin-top: 0.9rem;
+  max-width: 30ch;
+  text-wrap: balance;
+}
+
+/* Email capture */
+
+.access {
+  display: flex;
+  align-items: stretch;
+  width: min(100%, 420px);
+  margin-top: 1.7rem;
+  border-bottom: 1px solid var(--hairline);
+  transition: border-color 0.35s ease;
+}
+
+.access:focus-within { border-color: var(--gold-soft); }
+
+.access input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  padding: 0.8rem 0.25rem 0.8rem 0;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--cream);
+  caret-color: var(--gold);
+}
+
+.access input::placeholder {
+  color: rgba(244, 238, 225, 0.38);
+  letter-spacing: 0.02em;
+}
+
+.access button {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 0.8rem 0 0.8rem 1.2rem;
+  white-space: nowrap;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.access button:hover { color: #e0be7d; }
+.access button:disabled { opacity: 0.45; cursor: default; }
+
+.form-note {
+  min-height: 1.2rem;
+  margin-top: 0.7rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--stone);
+}
+
+.form-note.ok { color: #d7c294; }
+
+/* Pillars */
+
+.pillars {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  column-gap: 1.15rem;
+  row-gap: 0.55rem;
+  margin-top: 1.9rem;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.pillars .dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--gold-soft);
+}
+
+.legal {
+  margin-top: 1.5rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(244, 238, 225, 0.32);
+}
+
+/* ——— Reveal choreography ——— */
+
+.reveal {
+  opacity: 0;
+  animation: rise 1.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--d, 0s);
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.rule-draw {
+  animation: rise 1.15s cubic-bezier(0.22, 1, 0.36, 1) both,
+             draw 1.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--d, 0s);
+}
+
+@keyframes draw {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.fallarino.reveal {
+  animation: rise 1.15s cubic-bezier(0.22, 1, 0.36, 1) both,
+             tighten 1.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--d, 0s);
+}
+
+@keyframes tighten {
+  from { letter-spacing: 0.16em; }
+  to   { letter-spacing: 0.075em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backdrop, .reveal, .rule-draw, .fallarino.reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ——— Small & short screens ——— */
+
+@media (max-width: 420px) {
+  .pillars { column-gap: 0.85rem; }
+  .access button { letter-spacing: 0.22em; padding-left: 0.9rem; }
+}
+
+@media (max-height: 620px) {
+  .rule { margin: 1.1rem auto 0.95rem; }
+  .thesis { margin-top: 0.6rem; }
+  .access { margin-top: 1.1rem; }
+  .pillars { margin-top: 1.2rem; }
+  .legal { margin-top: 0.9rem; }
+}
+
+/* Short landscape viewports (laptops, small windows): tighten the whole
+   composition so the foot clears the FG crest in the photograph. */
+@media (orientation: landscape) and (max-height: 820px) {
+  .content {
+    padding-top: 1.7rem;
+    padding-bottom: 1.1rem;
+  }
+  .fallarino { font-size: clamp(2.2rem, 6.2vh + 1rem, 3.8rem); margin-top: 0.7rem; }
+  .group { font-size: clamp(0.95rem, 2.4vh, 1.3rem); margin-top: 0.35rem; }
+  .rule { margin: 1rem auto 0.9rem; }
+  .thesis { font-size: clamp(1.05rem, 2.4vh, 1.3rem); margin-top: 0.55rem; }
+  .access { margin-top: 1rem; }
+  .form-note { margin-top: 0.45rem; min-height: 1rem; }
+  .pillars { margin-top: 1rem; }
+  .legal { margin-top: 0.8rem; }
+}
+
+/* ——— A11y ——— */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
