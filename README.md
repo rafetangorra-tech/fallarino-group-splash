@@ -27,17 +27,19 @@ addresses until you give it one. Open `js/main.js` and fill in `CONFIG`:
 
 Until one of those is set, submitting shows "Access requests open shortly."
 
-## Pointing the Squarespace domain at GitHub Pages
+## Domain
 
-1. In this repo on GitHub: **Settings → Pages** → set *Custom domain* to the
-   domain (e.g. `fallarinogroup.com`) and tick **Enforce HTTPS** once DNS
-   propagates. GitHub will commit a `CNAME` file to the repo.
-2. In Squarespace: **Settings → Domains → (your domain) → DNS Settings**, then:
-   - Delete Squarespace's default A records.
-   - Add four **A records**, host `@`, pointing at:
-     `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - Add a **CNAME record**, host `www`, value `rafetangorra-tech.github.io`
-3. Give DNS 30–60 minutes, then verify at the domain and enable HTTPS.
+Live at **https://thefallarinogroup.com** (www redirects to the apex).
+DNS is managed in Squarespace (Domains → thefallarinogroup.com → DNS Settings):
+
+- Four **A records**, host `@` → `185.199.108.153` / `.109.153` / `.110.153` / `.111.153`
+- **CNAME**, host `www` → `rafetangorra-tech.github.io`
+- The Email Security preset (SPF/DMARC/DKIM TXT records) is intentionally kept —
+  it stops spoofed mail from this domain. Don't delete it.
+
+GitHub Pages holds the custom domain via the `CNAME` file in this repo, with
+HTTPS enforced. If the domain ever changes, update it in repo Settings → Pages
+and swap the `og:` URLs in `index.html` and the redirect in `404.html`.
 
 ## Design notes
 
