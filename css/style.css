@@ -53,9 +53,32 @@ body {
   to   { transform: scale(1); }
 }
 
+/* Blurred echo of the plate that fills the flanks on wide screens */
+.backdrop-fill {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 44%;
+  filter: blur(32px) brightness(0.55) saturate(1.05);
+  transform: scale(1.15);
+  display: none;
+}
+
 /* Portrait screens see nearly the full plate */
 @media (max-aspect-ratio: 3/4) {
   .backdrop { object-position: 50% 50%; }
+}
+
+/* Landscape screens: zoom out — show the entire photograph (sky, sign,
+   cars, bike) and let the blurred fill own the flanks */
+@media (min-aspect-ratio: 1/1) {
+  .backdrop {
+    object-fit: contain;
+    object-position: 50% 50%;
+  }
+  .backdrop-fill { display: block; }
 }
 
 /* ——— Grade: scrims, vignette, grain ——— */
