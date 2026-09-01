@@ -120,6 +120,7 @@ body {
 
 .the {
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 1.1rem;
   font-size: 0.66rem;
@@ -127,8 +128,11 @@ body {
   letter-spacing: 0.5em;
   text-transform: uppercase;
   color: var(--cream-dim);
-  padding-left: 0.5em; /* optically recentre tracked caps */
 }
+
+/* cancel the trailing tracked space so the word sits dead-centre
+   between its hairlines */
+.the span { margin-right: -0.5em; }
 
 .the::before, .the::after {
   content: "";
