@@ -58,6 +58,12 @@ body {
   .backdrop { object-position: 50% 50%; }
 }
 
+/* Landscape screens carry the wide plate (see <picture> in index.html);
+   bias the crop slightly upward so the sign and crest survive ultrawide */
+@media (min-aspect-ratio: 1/1) {
+  .backdrop { object-position: 50% 55%; }
+}
+
 /* ——— Grade: scrims, vignette, grain ——— */
 
 .scrim, .vignette, .grain {
