@@ -49,6 +49,8 @@ form.addEventListener("submit", async (event) => {
         }),
       });
       if (!res.ok) throw new Error(String(res.status));
+      const data = await res.json().catch(() => ({}));
+      if (String(data.success) === "false") throw new Error("relay not active");
       form.reset();
       say("Thank you for submitting an access request. We'll be in touch with you shortly.", true);
     } catch {
