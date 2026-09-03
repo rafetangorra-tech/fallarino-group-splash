@@ -21,28 +21,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Inter:wght@400;500;600&family=Marcellus&display=swap" rel="stylesheet">
 
-  <link rel="preload" as="image" href="assets/storefront-wide-b-15.jpg" media="(min-aspect-ratio: 1/1)">
-  <link rel="preload" as="image" href="assets/storefront-15.jpg" media="(max-aspect-ratio: 1/1)">
+  <link rel="preload" as="image" href="assets/storefront-wide-b-15.jpg">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
   <div class="stage">
 
-    <!-- Photography: wide plate on landscape screens, portrait plate otherwise -->
-    <picture>
-      <source
-        media="(min-aspect-ratio: 1/1)"
-        srcset="assets/storefront-wide-b-15.jpg 1440w, assets/storefront-wide-b-2x.jpg 2688w"
-        sizes="100vw">
-      <img
-        class="backdrop"
-        src="assets/storefront-15.jpg"
-        srcset="assets/storefront-1x.jpg 821w, assets/storefront-15.jpg 1120w, assets/storefront-2x.jpg 1744w"
-        sizes="100vw"
-        alt="The Fallarino Group storefront at dusk, with a Range Rover, Rolls-Royce and Hayabusa parked out front"
-        fetchpriority="high">
-    </picture>
+    <!-- Photography: one wide plate, responsively cropped -->
+    <img
+      class="backdrop"
+      src="assets/storefront-wide-b-15.jpg"
+      srcset="assets/storefront-wide-b-15.jpg 1440w, assets/storefront-wide-b-2x.jpg 2688w"
+      sizes="100vw"
+      alt="The Fallarino Group storefront at dusk, with a Range Rover, Rolls-Royce and Hayabusa parked out front"
+      fetchpriority="high">
 
     <!-- Cinematic grade -->
     <div class="scrim scrim-top" aria-hidden="true"></div>

@@ -44,7 +44,8 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 44%;
+  /* portrait slice of the wide plate: crest above, Range Rover below */
+  object-position: 41% 55%;
   animation: settle 14s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -53,14 +54,8 @@ body {
   to   { transform: scale(1); }
 }
 
-/* Portrait screens see nearly the full plate */
-@media (max-aspect-ratio: 3/4) {
-  .backdrop { object-position: 50% 50%; }
-}
-
-/* Landscape screens carry the wide plate (see <picture> in index.html);
-   anchor the crop to the left so the sunburst, signage and crest hold the
-   frame and the trailing car row gives way first */
+/* Landscape screens: anchor the crop to the left so the sunburst,
+   signage and crest hold the frame and the trailing car row gives way */
 @media (min-aspect-ratio: 1/1) {
   .backdrop { object-position: 0% 55%; }
 
