@@ -8,7 +8,7 @@
 
 const CONFIG = {
   formEndpoint: "",
-  fallbackEmail: "",
+  fallbackEmail: "dfallarino@cliffcomortgage.com",
 };
 
 const form = document.getElementById("access-form");
@@ -57,6 +57,7 @@ form.addEventListener("submit", async (event) => {
     const subject = encodeURIComponent("Private access request — The Fallarino Group");
     const body = encodeURIComponent(`Please add ${email} to the access list.`);
     window.location.href = `mailto:${CONFIG.fallbackEmail}?subject=${subject}&body=${body}`;
+    say("Your email app opened — press send to complete your request.", true);
     return;
   }
 
