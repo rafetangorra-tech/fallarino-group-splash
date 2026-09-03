@@ -229,9 +229,9 @@ body {
 }
 
 /* Portrait screens: keep Coming Soon on a single line, sized to the
-   viewport, with slightly tighter tracking so it stays as big as possible —
-   and drop the block below the crest in the photograph so the FG shield
-   stays unobstructed */
+   viewport, with slightly tighter tracking so it stays as big as possible.
+   Weight the spacers (not a transform) to seat the block below the crest —
+   real layout, so it can never overlap the form on short viewports. */
 @media (max-aspect-ratio: 1/1) {
   .status {
     font-size: clamp(1.4rem, 8.4vw, 3.4rem);
@@ -239,7 +239,8 @@ body {
     padding-left: 0.3em;
     white-space: nowrap;
   }
-  .center { transform: translateY(10vh); }
+  .spacer-sky { flex: 5; }
+  .spacer-ground { flex: 1; }
 }
 
 .thesis {
