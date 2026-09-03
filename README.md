@@ -14,18 +14,21 @@ favicon.svg       FG monogram favicon
 404.html          redirects stray URLs home
 ```
 
-## Wiring up the email capture (2 minutes)
+## Email capture
 
-The "Request Access" form works out of the box but has nowhere to send
-addresses until you give it one. Open `js/main.js` and fill in `CONFIG`:
+"Request Access" submissions are relayed silently by
+[FormSubmit](https://formsubmit.co) — each one arrives as an email to
+`dfallarino@cliffcomortgage.com` with the visitor's address (subject:
+"Access request — The Fallarino Group"). No account or dashboard; the
+inbox is the contact list.
 
-1. Create a free form at [formspree.io](https://formspree.io) →
-   copy the endpoint (looks like `https://formspree.io/f/xyzabcde`) →
-   paste it as `formEndpoint`. Submissions land in your inbox/dashboard.
-2. Alternatively set `fallbackEmail` to David's email — the button will open a
-   pre-filled email instead.
-
-Until one of those is set, submitting shows "Access requests open shortly."
+- **One-time activation:** FormSubmit emails an activation link to that
+  inbox on the first submission. Until it's clicked, submissions aren't
+  delivered.
+- To change the recipient or provider, edit `CONFIG.formEndpoint` at the
+  top of `js/main.js` (any JSON form endpoint works, e.g. Formspree —
+  which also adds a dashboard of submissions if you ever want a backup
+  record).
 
 ## Domain
 

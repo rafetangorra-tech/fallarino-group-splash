@@ -1,14 +1,14 @@
 /* The Fallarino Group — splash
    ————————————————————————————
-   Fill in CONFIG when ready:
-   - formEndpoint: create a free form at https://formspree.io and paste
-     the endpoint, e.g. "https://formspree.io/f/xyzabcde".
-   - fallbackEmail: if no endpoint is set, the button opens a pre-filled
-     email to this address instead. */
+   Access requests are collected silently in the background: FormSubmit
+   relays each submission as an email to the address in the endpoint.
+   (One-time setup: the first submission triggers an activation email to
+   that inbox — click it once and the relay is live. To swap providers,
+   point formEndpoint at any JSON form endpoint, e.g. Formspree.) */
 
 const CONFIG = {
-  formEndpoint: "",
-  fallbackEmail: "dfallarino@cliffcomortgage.com",
+  formEndpoint: "https://formsubmit.co/ajax/dfallarino@cliffcomortgage.com",
+  fallbackEmail: "",
 };
 
 const form = document.getElementById("access-form");
@@ -40,11 +40,17 @@ form.addEventListener("submit", async (event) => {
       const res = await fetch(CONFIG.formEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ email, source: "fallarino-group-splash" }),
+        body: JSON.stringify({
+          email,
+          _subject: "Access request — The Fallarino Group",
+          _template: "table",
+          _captcha: "false",
+          source: "thefallarinogroup.com",
+        }),
       });
       if (!res.ok) throw new Error(String(res.status));
       form.reset();
-      say("Received. You'll hear from us first.", true);
+      say("Thank you for submitting an access request. We'll be in touch with you shortly.", true);
     } catch {
       say("Something went wrong — please try again.");
     } finally {
