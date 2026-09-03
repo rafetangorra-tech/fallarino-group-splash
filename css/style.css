@@ -430,6 +430,25 @@ body {
   .legal { margin-top: 0.8rem; }
 }
 
+/* Real-phone heights (Safari bars included): compact the lower stack and
+   anchor it near the form so nothing can reach up to the crest, whose
+   bottom always sits at ~56% of the viewport in portrait.
+   (Kept last in the file so it wins the cascade.) */
+@media (max-aspect-ratio: 1/1) and (max-height: 860px) {
+  .spacer-ground { flex: 0 0 0.75rem; }
+  .center { padding: 0.4rem 0; }
+  .status { font-size: clamp(1.3rem, 7.4vw, 2rem); }
+  .thesis {
+    font-size: clamp(0.9rem, 2.9vw, 1.05rem);
+    margin-top: 0.7rem;
+    max-width: none;
+    white-space: nowrap;
+  }
+  .form-note { min-height: 0; margin-top: 0.4rem; }
+  .pillars { margin-top: 1.1rem; }
+  .legal { margin-top: 0.9rem; }
+}
+
 /* ——— A11y ——— */
 
 .visually-hidden {
